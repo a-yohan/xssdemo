@@ -1,0 +1,60 @@
+rules:
+  - id: unescaped-output
+    message: >-
+      Detected an Expression Language segment that does not escape output. 
+      This is dangerous because if any data in this expression can be controlled externally, 
+      it is a xss vulnerability.
+      Instead, use the 'escapeXml' function or use the 'out' tag from the JSTL taglib to escape this expression.
+      See https://www.tutorialspoint.com/jsp/jstl_function_escapexml.htm or
+      https://www.tutorialspoint.com/jsp/jstl_core_out_tag.htm for more information.
+    metadata:
+      owasp:
+        - A03:2021 - Injection
+      cwe:
+        - "CWE-116: Improper Encoding or Escaping of Output"
+      references:
+        - https://www.tutorialspoint.com/jsp/jstl_function_escapexml.htm
+        - https://www.tutorialspoint.com/jsp/jstl_core_out_tag.htm
+        - https://stackoverflow.com/a/4948856
+        - https://stackoverflow.com/a/3180202
+      category: security
+      technology:
+        - jsp
+      subcategory:
+        - audit
+      likelihood: LOW
+      impact: LOW
+      confidence: LOW
+    patterns:
+      - patterns:
+          - pattern-inside: ${...}
+          - pattern-not-inside: ${$TAG:escapeXml(...)}
+          - pattern-not-inside: <$TAG:$FUNC $ATTR=...>
+          - pattern-not-inside: <!-- ... ... ... -->
+          - pattern-not-inside: |
+              <!-- 
+              ... 
+              ... 
+              ... 
+              -->
+          - pattern-not-inside: <%-- ... ... ... --%>
+          - pattern-not-inside: |
+              <%-- 
+              ... 
+              ... 
+              ... 
+              --%>
+          - pattern: $...VAR
+      - metavariable-pattern:
+          metavariable: $...VAR
+          patterns:
+            - pattern-not-regex: (Id|Date|Number)$
+            - pattern-not-regex: (_csrf|equals)
+            - pattern-not-regex: ^'.*'$
+    paths:
+      include:
+        - "*.jsp"
+        - "*.tag"
+    languages:
+      - generic
+    severity: WARNING

@@ -1,0 +1,40 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/java
+{
+	"name": "Java",
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/java:0-11",
+
+	"features": {
+		"ghcr.io/devcontainers/features/java:1": {
+			"version": "none",
+			"installMaven": "true",
+			"installGradle": "false"
+		}
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"vscjava.vscode-java-pack",
+				"vscjava.vscode-lombok",
+				"vmware.vscode-spring-boot",
+				"redhat.vscode-yaml",
+				"redhat.vscode-xml"
+			],
+			"settings": {
+				"java.configuration.updateBuildConfiguration": "interactive",
+				"java.configuration.runtimes": [],
+				"java.eclipse.downloadSources": true,
+				"java.saveActions.organizeImports": true,
+				"java.autobuild.enabled": false,
+				"java.server.launchMode": "Standard",
+				"java.compile.nullAnalysis.mode": "disabled",
+				"java.debug.settings.onBuildFailureProceed": true,
+				"java.completion.matchCase": "firstLetter",
+				"java.inlayHints.parameterNames.enabled": "none",
+				"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=24 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m -Xlog:disable"
+			}
+		}
+	},
+	"forwardPorts": [8080]
+}
