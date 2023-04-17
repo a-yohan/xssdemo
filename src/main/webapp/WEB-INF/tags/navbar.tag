@@ -16,7 +16,7 @@
             <div class="navbar-end">
                 <div class=" navbar-item">
                     <div class="control has-icons-left">
-                        <input class="input is-rounded" value="${param.q}" placeholder="Search">
+                        <input id="search" class="input is-rounded" value="${param.q}" placeholder="Search">
                         <span class="icon is-left">
                             <i class="fa fa-search"></i>
                         </span>

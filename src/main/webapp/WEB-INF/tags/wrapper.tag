@@ -23,10 +23,6 @@
         integrity="sha512-KsmAN0XOiG+TO0kNormPyohqUVGqAdG9RGNEr9yINp6HoBK2HyAT1FxxuXv8ZyK5dJ2tF3xtuPguAS9UrrMy3A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="<c:url value='/css/style.css'/>">
-    <script>
-        var data = Object.create(null)
-        data.logedin = false
-    </script>
 </head>
 <sec:authentication property="principal" var="user"/>
 <body data-loggedin="${!user.equals('anonymousUser')}">

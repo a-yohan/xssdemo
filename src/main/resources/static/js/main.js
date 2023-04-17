@@ -15,4 +15,13 @@
             OverlayScrollbars(document.querySelectorAll("body"), {});
         });
     }
+    var searchBox = document.getElementById("search")
+    if(searchBox){
+        searchBox.addEventListener('keydown', function (e) {
+            e.stopPropagation();
+            if (e.key === 'Enter') {
+                document.location = `${document.location.origin}/?q=${searchBox.value}`;
+            }
+        });
+    }
 })();

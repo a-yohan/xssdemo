@@ -1,6 +1,6 @@
 (function () {
   $(document).ready(function () {
-    var url = location.href.concat('/comment')
+    var url = `${document.location.origin}${document.location.pathname}/comment`;
     var page = 0
     var rendered = []
     var state = $(document.body).data()

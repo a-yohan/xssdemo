@@ -1,7 +1,8 @@
 server:
   port: 8080
   address: 0.0.0.0
-  
+  servlet.session.cookie.http-only: false
+
 spring:
   datasource:
     url: jdbc:h2:file:./xssdemo
