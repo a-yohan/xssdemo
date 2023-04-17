@@ -38,8 +38,8 @@ public class WebSecurityConfig {
             .contentSecurityPolicy(
                 String.join("; ",
                     "default-src 'self'",
-                    "script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com",
-                    "style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com",
+                    "script-src 'self' https://cdnjs.cloudflare.com",
+                    "style-src 'self' https://cdnjs.cloudflare.com",
                     "font-src https://cdnjs.cloudflare.com"
                     )
                 ).and()
