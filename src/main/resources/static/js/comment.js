@@ -32,6 +32,13 @@
           loading = false
         })
     }
+    function htmlEncode(s) {
+      return s.replaceAll('&', '&amp;')
+        .replaceAll('<', '&lt;')
+        .replaceAll('>', '&gt;')
+        .replaceAll('"', '&quot;')
+        .replaceAll('\'', '&#27;')
+    }
     function renderComment(comment) {
       if (rendered.includes(comment.id)) return
       var createdAt = (new Date(comment.createdAt))
@@ -40,7 +47,7 @@
       <div class="card p-2 mt-2">    
         <div class="content">
           <div class="is-size-6 is-uppercase has-text-weight-medium username">${comment.user.name}</div>
-          <p>${comment.content}</p>
+          <p>${htmlEncode(comment.content)}</p>
           <span class="is-size-7">${dt}</span>
         </div>
       </div>
