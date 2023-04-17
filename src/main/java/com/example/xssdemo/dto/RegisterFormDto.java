@@ -10,7 +10,8 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class RegisterFormDto extends UserFormDto {
-    
+
+    @Pattern(regexp = "^[a-zA-Z ]+$", message = "invalid name")
     private String name;
 
     @Pattern(regexp = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[^\\w]|.*[_]).{6,}$", message = "invalid password")

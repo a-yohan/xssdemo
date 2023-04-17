@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class UserFormDto {
     
+    @Pattern(regexp = "^[a-zA-Z ]+$", message = "invalid name")
     private String name;
 
     @Pattern(
