@@ -1,7 +1,7 @@
 server:
   port: 8080
   address: 0.0.0.0
-  servlet.session.cookie.http-only: false
+  servlet.session.cookie.http-only: true
 
 spring:
   datasource:
